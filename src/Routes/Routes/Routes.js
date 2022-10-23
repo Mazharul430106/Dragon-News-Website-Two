@@ -1,5 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter  } from "react-router-dom";
 import Main from "../../Layout/Main";
+import Categories from "../../Pages/Categories/Categories";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
@@ -14,6 +15,11 @@ export const routes = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: '/category/:id',
+                element: <Categories></Categories>,
+                loader: ({params})=> fetch(`http://localhost:4000/category/${params.id}`)
+            },
+            {
                 path: '/register',
                 element: <Register></Register>
             },
@@ -21,7 +27,7 @@ export const routes = createBrowserRouter([
                 path: '/login',
                 element: <Login></Login>
             }
-            
+
         ]
     
     }
