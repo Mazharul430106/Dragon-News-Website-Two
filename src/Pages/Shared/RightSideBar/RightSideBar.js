@@ -15,7 +15,6 @@ const RightSideBar = () => {
                 <Button className='mb-1'>  <FaGithub></FaGithub>  Sign In With Github</Button>
             </ButtonGroup>
 
-
             <div>
                 <h5>Find Us On</h5>
                 <div>
@@ -31,8 +30,6 @@ const RightSideBar = () => {
             <div className='mt-3'>
                 <CarouselSlider></CarouselSlider>
             </div>
-
-
         </div>
 
 

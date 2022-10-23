@@ -4,7 +4,6 @@ import NewsDetails from '../NewsDetails/NewsDetails';
 
 const Categories = () => {
     const categoryNews = useLoaderData();
-    console.log(categoryNews)
     return (
         <div>
             <h3> Category Data :  {categoryNews.length}</h3>
