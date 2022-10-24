@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
+
+    const {userLogin} = useContext(AuthContext);
 
     const handleFormLogin = (event)=>{
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        //console.log(email,password);
+        handleLoginUser(email,password);
+        form.reset();
     }
+
+    const handleLoginUser = (email,password)=> {
+        userLogin(email,password)
+        .then(result=> {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> {
+            console.error('error',error);
+        })
+    }
+
+    
+
 
     return (
         <Form onSubmit={handleFormLogin}>

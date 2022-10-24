@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
 
+    const {createUser} = useContext(AuthContext);
     const handleFormRegister = (event)=>{
         event.preventDefault();
         const form = event.target;
@@ -11,7 +13,21 @@ const Register = () => {
         const ph_Url = form.url.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name,email,password,ph_Url);
+        //console.log(name,email,password,ph_Url);
+        handleCreateUser(email,password);
+        form.reset();
+    }
+
+    const handleCreateUser = (email,password)=>{
+        createUser(email,password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> {
+            console.error('error',error);
+        })
+
     }
 
     return (
@@ -35,7 +51,7 @@ const Register = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-                Submit
+                Register
             </Button>
         </Form>
     );

@@ -10,7 +10,7 @@ const RightSideBar = () => {
     return (
         <div>
             <ButtonGroup className='w-100' vertical>
-                <Button className='mb-1'> <FaGoogle></FaGoogle>  Sign In With Google</Button>
+                <Button className='mb-1 text-start'> <FaGoogle></FaGoogle>  Sign In With Google</Button>
                 <Button className='mb-1'> <FaFacebook></FaFacebook>   Sign In With FaceBook</Button>
                 <Button className='mb-1'>  <FaGithub></FaGithub>  Sign In With Github</Button>
             </ButtonGroup>
@@ -19,7 +19,7 @@ const RightSideBar = () => {
                 <h5>Find Us On</h5>
                 <div>
                     <ListGroup>
-                        <ListGroup.Item> <FaFacebook></FaFacebook>  FaceBook</ListGroup.Item>
+                        <ListGroup.Item> <div className='d-flex justify-content-between'>  <FaFacebook></FaFacebook> <span>FaceBook</span>  </div> </ListGroup.Item>
                         <ListGroup.Item> <FaGoogle></FaGoogle>  Google</ListGroup.Item>
                         <ListGroup.Item> <FaYoutube></FaYoutube>  Youtube</ListGroup.Item>
                         <ListGroup.Item> <FaTwitter></FaTwitter>  Twitter</ListGroup.Item>
