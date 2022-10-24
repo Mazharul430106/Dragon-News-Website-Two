@@ -7,6 +7,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Login = () => {
 
     const {userLogin} = useContext(AuthContext);
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/' 
@@ -32,6 +33,18 @@ const Login = () => {
             console.error('error',error);
         })
     }
+
+ 
+
+
+
+
+
+
+
+
+
+
 
     return (
         <Form onSubmit={handleFormLogin}>

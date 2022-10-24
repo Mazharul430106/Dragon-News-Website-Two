@@ -1,25 +1,42 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { FaFacebook, FaGoogle, FaGithub, FaYoutube, FaTwitter } from "react-icons/fa";
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import CarouselSlider from '../CarouselSlider/CarouselSlider';
 
 
 const RightSideBar = () => {
+
+    const {providerLogin} = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = ()=>{
+        providerLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> {
+            console.error('error',error);
+        })
+    }
+
     return (
         <div>
             <ButtonGroup className='w-100' vertical>
-                <Button className='mb-1 text-start'> <FaGoogle></FaGoogle>  Sign In With Google</Button>
-                <Button className='mb-1'> <FaFacebook></FaFacebook>   Sign In With FaceBook</Button>
-                <Button className='mb-1'>  <FaGithub></FaGithub>  Sign In With Github</Button>
+                <Button onClick={handleGoogleSignIn} className='mb-1 text-start'> <FaGoogle></FaGoogle>  Sign In With Google</Button>
+                <Button className='mb-1 text-start'> <FaFacebook></FaFacebook>   Sign In With FaceBook</Button>
+                <Button className='mb-1 text-start'>  <FaGithub></FaGithub>  Sign In With Github</Button>
             </ButtonGroup>
 
             <div>
                 <h5>Find Us On</h5>
                 <div>
                     <ListGroup>
-                        <ListGroup.Item> <div className='d-flex justify-content-between'>  <FaFacebook></FaFacebook> <span>FaceBook</span>  </div> </ListGroup.Item>
+                        <ListGroup.Item> <FaFacebook></FaFacebook> <span>FaceBook</span> </ListGroup.Item>
                         <ListGroup.Item> <FaGoogle></FaGoogle>  Google</ListGroup.Item>
                         <ListGroup.Item> <FaYoutube></FaYoutube>  Youtube</ListGroup.Item>
                         <ListGroup.Item> <FaTwitter></FaTwitter>  Twitter</ListGroup.Item>

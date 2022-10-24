@@ -42,7 +42,7 @@ const Header = () => {
                                     </Nav.Link>
 
                                     <Nav.Link>
-                                        <Link onClick={handleLogout} className='text-light text-decoration-none'>logout</Link>
+                                        <Link onClick={handleLogout} className='text-light text-decoration-none'>Logout</Link>
                                     </Nav.Link>
                                 </>
                                 :

@@ -4,7 +4,7 @@ import NewsDetails from '../NewsDetails/NewsDetails';
 
 const Home = () => {
     const allNews = useLoaderData();
-    console.log(allNews);
+    // console.log(allNews);
     return (
         <div>
             {
