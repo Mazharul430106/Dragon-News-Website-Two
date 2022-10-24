@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -12,15 +12,40 @@ const RightSideBar = () => {
 
     const {providerLogin} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const facebookProvider = new FacebookAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = ()=>{
         providerLogin(googleProvider)
         .then(result => {
             const user = result.user;
             console.log(user);
-        })
+        }) 
         .catch(error=> {
             console.error('error',error);
+        })
+    }
+
+
+    const handleFacebookSignIn = ()=>{
+        providerLogin(facebookProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> {
+            console.log('error',error);
+        })
+    }
+
+    const handleGithubSignIn = ()=> {
+        providerLogin(gitHubProvider)
+        .then(result=> {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> {
+            console.log(error);
         })
     }
 
@@ -28,8 +53,8 @@ const RightSideBar = () => {
         <div>
             <ButtonGroup className='w-100' vertical>
                 <Button onClick={handleGoogleSignIn} className='mb-1 text-start'> <FaGoogle></FaGoogle>  Sign In With Google</Button>
-                <Button className='mb-1 text-start'> <FaFacebook></FaFacebook>   Sign In With FaceBook</Button>
-                <Button className='mb-1 text-start'>  <FaGithub></FaGithub>  Sign In With Github</Button>
+                <Button onClick={handleFacebookSignIn} className='mb-1 text-start'> <FaFacebook></FaFacebook>   Sign In With FaceBook</Button>
+                <Button onClick={handleGithubSignIn} className='mb-1 text-start'>  <FaGithub></FaGithub>  Sign In With Github</Button>
             </ButtonGroup>
 
             <div>

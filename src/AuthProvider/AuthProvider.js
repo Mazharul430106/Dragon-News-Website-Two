@@ -27,9 +27,7 @@ const AuthProvider = ({children}) => {
         return sendEmailVerification(auth.currentUser);
     }
 
-
-
-
+    
     const updateUserProfile = (profile)=>{
         setLoading(true);
         return updateProfile(auth.currentUser, profile);
