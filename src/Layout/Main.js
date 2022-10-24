@@ -14,26 +14,13 @@ const Main = () => {
                     <Col lg="2" className='d-none d-lg-block'>
                         <LeftSideBar></LeftSideBar>
                     </Col>
-                    <Col lg="7">
+                    <Col lg="7" className='order-lg-1 order-2'>
                          <Outlet></Outlet>
                     </Col>
-                    <Col lg="3" className='order-0'>
+                    <Col lg="3" className='order-lg-2 order-1'>
                        <RightSideBar></RightSideBar>
                     </Col>
                 </Row>
-
-                {/* <div className='d-flex flex-md-row flex-column-reverse justify-content-between'>
-                    
-                    <div className='w-md-25' style={{width:'100%'}} >
-                        <LeftSideBar></LeftSideBar>
-                    </div>
-                    <div className='w-md-50'>
-                        <Outlet></Outlet>
-                    </div>
-                    <div className='w-md-25' style={{width:'100%'}} >
-                        <RightSideBar></RightSideBar>
-                    </div>
-                </div> */}
 
             </Container>
         </div>

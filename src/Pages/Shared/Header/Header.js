@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import LeftSideBar from '../LeftSideBar/LeftSideBar';
 import { useContext } from 'react';
-
+import Image from 'react-bootstrap/Image';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
-    const { user,logOutUser} = useContext(AuthContext);
-    console.log(user);
+    const { user, logOutUser} = useContext(AuthContext);
 
     const handleLogout = ()=>{
         logOutUser()
@@ -23,7 +23,6 @@ const Header = () => {
         })
     }
 
-
     return (
         <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark" className='mb-3' >
             <Container>
@@ -34,30 +33,50 @@ const Header = () => {
                         <Nav.Link>
                             <Link to={'/home'} className="text-white text-decoration-none">Home</Link>
                         </Nav.Link>
+
                         {
-                                user?.uid ?
-                                    <>  
-                                        <Nav.Link>
-                                            {
-                                                user.email
-                                            }
-                                        </Nav.Link>
+                            user?.uid ?
+                                <>  
+                                    <Nav.Link>
+                                        {user?.displayName}
+                                    </Nav.Link>
 
-                                        <Nav.Link>
-                                            <Link onClick={handleLogout} className='text-light text-decoration-none'>logout</Link>
-                                        </Nav.Link>
-                                    </>
-                                    :
-                                    <>
-                                        <Nav.Link>
-                                            <Link to={'/register'} className="text-white text-decoration-none">Register</Link>
-                                        </Nav.Link>
+                                    <Nav.Link>
+                                        <Link onClick={handleLogout} className='text-light text-decoration-none'>logout</Link>
+                                    </Nav.Link>
+                                </>
+                                :
+                                <>
+                                    <Nav.Link>
+                                        <Link to={'/register'} className="text-white text-decoration-none">Register</Link>
+                                    </Nav.Link>
 
-                                        <Nav.Link>
-                                            <Link to={'/login'} className="text-white text-decoration-none">Login</Link>
-                                        </Nav.Link>
-                                    </>
-                            }
+                                    <Nav.Link>
+                                        <Link to={'/login'} className="text-white text-decoration-none">Login</Link>
+                                    </Nav.Link>
+                                </>
+                        }
+
+                        {
+                            user?.photoURL ?
+                            <>
+                                <Nav.Link>
+                                    <Image 
+                                        src={user?.photoURL}    
+                                        style={{height: '30px'}}
+                                        roundedCircle
+                                    >
+                                    </Image>
+                                </Nav.Link>
+                            </>
+                            :
+                            <> 
+                               <Nav.Link>
+                                    <FaUser></FaUser>
+                                </Nav.Link> 
+                            </>
+
+                        }
 
                     </Nav>
 
